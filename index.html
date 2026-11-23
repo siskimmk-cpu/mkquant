@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f3f4f6">
+<meta name="robots" content="noindex,nofollow">
+<title>MK QUANT · Performance</title>
+<meta property="og:title" content="MK QUANT · Performance">
+<meta property="og:description" content="퀀트 자동매매 실전 성과 — 수익률·승률·최대 낙폭·예상 수익">
+<style>
+:root{--bg:#f3f4f6;--card:#fff;--ink:#14181f;--sub:#6b7280;--faint:#9aa1ab;--line:#eceef1;--up:#e0303e;--down:#2d6cdf;--brand:#14181f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Pretendard Variable",Pretendard,"SF Pro Text","Segoe UI Variable Text","Segoe UI",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 18px 48px}
+header{display:flex;align-items:center;gap:12px;margin:6px 2px 20px}
+.mark{width:38px;height:38px;border-radius:11px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px;letter-spacing:-.02em}
+header h1{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
+header p{margin:0;font-size:13px;color:var(--sub)}
+header .r{margin-left:auto;text-align:right;font-size:13px;color:var(--sub);display:flex;align-items:center;gap:10px}
+.share{border:0;border-radius:10px;background:var(--brand);color:#fff;font:600 13px Pretendard,sans-serif;padding:9px 14px;cursor:pointer}
+.share:focus-visible{outline:2px solid var(--down);outline-offset:2px}
+.grid{display:grid;gap:12px}
+.card{background:var(--card);border-radius:18px;padding:20px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;margin-bottom:12px}
+.big{font-size:38px;font-weight:800;letter-spacing:-.025em;margin:2px 0 4px;font-variant-numeric:tabular-nums}
+.lbl{font-size:13px;color:var(--sub);margin:0}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.kv b{display:block;font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tiles{grid-template-columns:repeat(4,1fr);margin-bottom:12px}
+.tile b{display:block;font-size:22px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tile small{display:block;color:var(--faint);font-size:12px;margin-top:2px}
+.up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--sub)}
+h2{font-size:15px;margin:0 0 12px;font-weight:700}
+.two{grid-template-columns:2fr 1fr;margin-bottom:12px}
+.half{grid-template-columns:1fr 1fr;margin-bottom:12px}
+svg{display:block;width:100%;height:auto}
+.chart-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--faint);margin-top:6px}
+.tip{font-size:13px;color:var(--sub);min-height:20px;margin:-4px 0 6px;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{font-size:12px;font-weight:500;color:var(--faint);text-align:right;padding:0 6px 8px;white-space:nowrap}
+td{padding:10px 6px;border-top:1px solid var(--line);text-align:right;font-size:14px;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+th:last-child,td:last-child{padding-right:0}
+td .s{display:block;font-size:12px;color:var(--faint)}
+.list div{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.list div:first-child{border-top:0}
+.empty{color:var(--faint);font-size:14px;padding:6px 0}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.pos{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.pos .card{background:var(--bg);padding:14px 16px;border-radius:14px}
+.pos .top{display:flex;justify-content:space-between;font-weight:600}
+.pos .s{font-size:12px;color:var(--sub);margin-top:4px;display:flex;justify-content:space-between}
+.fc{grid-template-columns:repeat(4,1fr);gap:10px;margin-top:4px}
+.fc>div{background:var(--bg);border-radius:14px;padding:14px 16px}
+.fc b{display:block;font-size:22px;font-weight:700;margin:4px 0 2px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fc .eqv{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+.fc .rng{font-size:12px;color:var(--sub);margin-top:6px;font-variant-numeric:tabular-nums}
+.fcbar{position:relative;height:6px;border-radius:3px;background:linear-gradient(90deg,color-mix(in srgb,var(--down) 35%,transparent),#e5e7eb 50%,color-mix(in srgb,var(--up) 35%,transparent));margin:10px 0 2px}
+.fcbar i{position:absolute;top:-3px;width:3px;height:12px;border-radius:2px;background:var(--ink);transform:translateX(-50%)}
+.fcx{display:flex;justify-content:space-between;font-size:12.5px;margin-top:6px;padding-top:6px;border-top:1px solid #e6e8eb;font-variant-numeric:tabular-nums}.fcx span:first-child{color:var(--sub)}.fcx span:last-child{font-weight:600}.fcx.sub2{border-top:0;margin-top:0;padding-top:0;font-size:12px}.fcx.sub2 span:last-child{color:var(--faint);font-weight:500}
+.fcnote{font-size:13px;color:var(--sub);margin:-4px 0 12px}
+.hit{font-weight:600}.hit.ok{color:#12a36b}.hit.no{color:var(--up)}
+@media (max-width:860px){.fc{grid-template-columns:repeat(2,1fr)}}
+
+:root{--num:"SF Pro Display","Segoe UI Variable Display","Helvetica Neue",Inter,"Pretendard Variable",Pretendard,system-ui,sans-serif;--ink2:#3b4350}
+.big,.tile b,.kv b,.fc b,td,.eqv,.list div,.chart-meta,.tip{font-family:var(--num);font-feature-settings:"tnum" 1}
+.h1s{font-weight:500;color:var(--sub);margin-left:8px;font-size:15px}
+.lbl{font-weight:600;color:var(--ink2);font-size:12.5px;letter-spacing:.01em}
+.lbl em{font-style:normal;font-weight:400;color:var(--faint);margin-left:6px;letter-spacing:0}
+h2 span{font-weight:500;color:var(--faint);font-size:12.5px;margin-left:8px}
+.dark{background:linear-gradient(160deg,#0d1522 0%,#16233a 100%)!important;color:#fff}
+.dark .lbl{color:#c7d2e0}.dark .lbl em{color:#7f8ea3}.dark .flat{color:#8d9bb0}
+.dark .up{color:#ff7a85}.dark .down{color:#78aaff}
+.dark .big{font-size:42px;letter-spacing:-.03em}
+.dark .note{color:#8d9bb0;font-size:12px;margin:10px 0 0;line-height:1.55}
+th{letter-spacing:.02em}
+footer b{color:var(--sub);font-weight:600}
+@media (max-width:600px){header{flex-wrap:wrap;row-gap:10px}header .r{width:100%;margin-left:0;justify-content:space-between}.h1s{display:block;margin:2px 0 0;font-size:13px}.fc{grid-template-columns:1fr}.dark .big{font-size:36px}}
+.rng2{display:flex;justify-content:space-between;margin-top:8px;font-size:12.5px;color:var(--sub)}.rng2 b{display:block;font-size:16px;font-weight:700;margin-top:1px;font-family:var(--num);font-feature-settings:"tnum" 1}.rng2 span:last-child{text-align:right}
+footer{font-size:12px;color:var(--faint);margin:18px 2px 0;line-height:1.7}
+footer a{color:var(--sub)}
+a:focus-visible{outline:2px solid var(--down);border-radius:6px}
+@media (max-width:860px){.hero,.two,.half{grid-template-columns:1fr}.tiles{grid-template-columns:repeat(2,1fr)}.big{font-size:32px}}
+
+.navrow{display:flex;gap:28px;margin:10px 0 4px}.navrow span{display:flex;flex-direction:column;font-size:12px;color:#aab0b8}.navrow em{font-style:normal;font-size:11px;opacity:.7}.navrow b{font-family:var(--num);font-size:20px;color:#fff;margin-top:2px}.navrow b.up{color:#ff7a85}.navrow b.down{color:#78aaff}
+.hero .big.up{color:#ff7a85}.hero .big.down{color:#78aaff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><div class="mark">MQ</div><div><h1>MK QUANT<span class="h1s">Performance</span></h1><p id="since">불러오는 중</p></div><div class="r"><span id="upd"></span><button class="share" id="share" type="button">Share</button></div></header>
+  <div id="app"><div class="card empty">불러오는 중이에요</div></div>
+  <footer><b>Methodology</b> · 퀀트 자동매매 봇 3개의 실전 성적이에요. 수익률은 입금·출금 영향을 뺀 시간가중 수익률(TWR), 수수료·슬리피지를 뺀 순수익 기준이에요. 계좌 정보는 공개하지 않아요. 5분마다 자동 갱신 · 투자 권유가 아니에요.</footer>
+</div>
+<script>
+(function(){
+  var C=function(x){return x==null?"flat":x>0.00005?"up":x<-0.00005?"down":"flat"};
+  var P=function(x,d){return x==null?"-":(x>0?"+":"")+(x*100).toFixed(d==null?2:d)+"%"};
+  var PC=function(x){return x==null?"-":Math.round(x*100)+"%"};
+  var CP=function(x,d){return '<span class="'+C(x)+'">'+P(x,d)+'</span>'};
+  var E=function(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+  var D=function(t){var d=new Date(t*1000);return (d.getMonth()+1)+"/"+d.getDate()+" "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")};
+  var FK=function(k){return /1주/.test(k)?"Next Week":/달 말/.test(k)?"Month-End":/연말/.test(k)?"Year-End":/1년/.test(k)?"1 Year":E(k)};
+  function chart(c){
+    if(!c||c.length<2)return '<div class="empty">아직 기록이 충분하지 않아요</div>';
+    var w=760,h=220,pad=6,vs=c.map(function(x){return x[1]}),mn=Math.min.apply(0,vs),mx=Math.max.apply(0,vs);if(mx===mn){mx+=1;mn-=1}
+    var X=function(i){return pad+i*(w-2*pad)/(c.length-1)},Y=function(v){return h-pad-(v-mn)*(h-2*pad)/(mx-mn)};
+    var pts=c.map(function(x,i){return X(i).toFixed(1)+","+Y(x[1]).toFixed(1)}).join(" ");
+    var col=c[c.length-1][1]>=100?"var(--up)":"var(--down)",by=Y(100).toFixed(1);
+    return '<div class="tip" id="tip">'+D(c[c.length-1][0])+' · '+P(c[c.length-1][1]/100-1)+'</div><svg viewBox="0 0 '+w+' '+h+'" id="cv" role="img" aria-label="수익률 추이">'
+      +'<line x1="0" x2="'+w+'" y1="'+by+'" y2="'+by+'" stroke="#d9dce1" stroke-dasharray="4 4"/><polyline points="'+pts+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linejoin="round"/>'
+      +'<line id="cx" x1="0" x2="0" y1="0" y2="'+h+'" stroke="#c4c8ce" visibility="hidden"/></svg><div class="chart-meta"><span>'+D(c[0][0])+'</span><span>최고 '+P(mx/100-1)+' · 최저 '+P(mn/100-1)+'</span><span>'+D(c[c.length-1][0])+'</span></div>';
+  }
+  function hook(c){var sv=document.getElementById("cv");if(!sv)return;var tip=document.getElementById("tip"),cx=document.getElementById("cx");
+    function mv(ev){var r=sv.getBoundingClientRect(),x=((ev.touches?ev.touches[0].clientX:ev.clientX)-r.left)/r.width;var i=Math.max(0,Math.min(c.length-1,Math.round(x*(c.length-1))));var px=6+i*(760-12)/(c.length-1);cx.setAttribute("x1",px);cx.setAttribute("x2",px);cx.setAttribute("visibility","visible");tip.innerHTML=D(c[i][0])+' · '+CP(c[i][1]/100-1)}
+    sv.addEventListener("mousemove",mv);sv.addEventListener("touchmove",mv,{passive:true});}
+  function per(rows){if(!rows||!rows.length)return '<div class="empty">기록이 쌓이면 보여요</div>';return '<div class="list">'+rows.map(function(r){return '<div><span>'+E(r.p)+'</span><span>'+CP(r.r)+'</span></div>'}).join("")+'</div>'}
+  function tbl(rows,first){if(!rows||!rows.length)return '<div class="empty">아직 청산한 거래가 없어요</div>';
+    return '<div class="scroll"><table><tr><th>'+first+'</th><th>Trades</th><th>Win</th><th>Avg</th></tr>'+rows.map(function(r){return '<tr><td>'+E(r.k)+'</td><td>'+r.n+'</td><td>'+PC(r.win)+'</td><td>'+CP(r.avg)+'</td></tr>'}).join("")+'</table></div>'}
+  function render(d){window._ok=1;
+    var days=d.started?Math.floor((d.t-d.started)/86400)+1:null,sd=d.started?new Date(d.started*1000):null;
+    document.getElementById("since").textContent="Since "+(sd?sd.getFullYear()+"."+(sd.getMonth()+1)+"."+sd.getDate()+" · Day "+days+" · 실전 운용":"-");
+    document.getElementById("upd").textContent="As of "+D(d.t)+" KST";
+    var h='<div class="hero"><section class="card dark"><p class="lbl">Total Return<em>누적 수익률 · TWR</em></p><div class="big '+C(d.r)+'">'+P(d.r)+'</div>'
+      +'<div class="navrow"><span>Total NAV<em>총자산</em><b>₩'+(d.nav||0).toLocaleString('ko-KR')+'</b></span><span>Net Profit<em>순수익</em><b class="'+C(d.gain)+'">'+(d.gain>=0?'+':'-')+'₩'+Math.abs(d.gain||0).toLocaleString('ko-KR')+'</b></span></div>'+'<p class="note">수수료·슬리피지를 뺀 순수익, 입금·출금 영향을 뺀 실제 운용 성적이에요.</p></section>'
+      +'<section class="card kv"><div><p class="lbl">This Week<em>이번 주</em></p><b class="'+C(d.week)+'">'+P(d.week)+'</b></div><div><p class="lbl">MTD<em>이번 달</em></p><b class="'+C(d.month)+'">'+P(d.month)+'</b></div>'
+      +'<div><p class="lbl">Trades<em>거래</em></p><b>'+d.n+'</b></div><div><p class="lbl">Avg / Trade<em>거래당</em></p><b class="'+C(d.avg_ret)+'">'+P(d.avg_ret)+'</b></div></section></div>';
+    h+='<div class="grid tiles"><section class="card tile"><p class="lbl">Win Rate<em>승률</em></p><b>'+PC(d.win)+'</b><small>'+d.n+' trades</small></section>'
+      +'<section class="card tile"><p class="lbl">Max Drawdown<em>최대 낙폭</em></p><b class="'+(d.mdd<0?"down":"flat")+'">'+P(d.mdd)+'</b><small>'+(d.mdd_at?"Trough "+D(d.mdd_at):"No drawdown")+'</small></section>'
+      +'<section class="card tile"><p class="lbl">Bots<em>운용 봇</em></p><b>'+(d.bots||[]).length+'</b><small>MQ-S · MQ-D · MQ-B</small></section>'
+      +'<section class="card tile"><p class="lbl">Slippage<em>체결 차이</em></p><b>'+P(d.slip)+'</b><small>'+d.nslip+' fills</small></section></div>';
+    var f=d.fc;
+    if(f&&f.rows){h+='<section class="card" style="margin-bottom:12px"><h2>Forecast<span>예상 수익</span></h2><p class="fcnote">'+(f.reg==="bull"?"Bull regime · 상승장":"Bear regime · 하락장")+' · 검증 결과와 실전 성적을 섞어 계산 (실전 매도 '+f.n+'회 — 쌓일수록 실전 비중이 커져요)</p><div class="grid fc">'
+      +f.rows.map(function(r){var span=Math.max(Math.abs(r.lo),Math.abs(r.hi))||1,pos=50+r.mid/span*50;
+        return '<div><p class="lbl">'+FK(r.k)+'<em>'+E(r.k)+'</em></p><b class="'+C(r.mid)+'">'+P(r.mid)+'</b><div class="fcbar"><i style="left:'+Math.max(2,Math.min(98,pos))+'%"></i></div><div class="rng2"><span>최소<b class="'+C(r.lo)+'">'+P(r.lo)+'</b></span><span>최대<b class="'+C(r.hi)+'">'+P(r.hi)+'</b></span></div>'
+          +'<div class="fcx"><span>Live pace</span><span class="'+C(r.pace)+'">'+P(r.pace)+'</span></div><div class="fcx"><span>Target '+P(f.target_w,0).replace("+","")+'/wk</span><span class="'+C(r.tgt)+'">'+P(r.tgt,1)+'</span></div></div>'}).join("")
+      +'</div><p class="fcnote" style="margin:12px 0 0">큰 숫자는 기준 예상, 최소~최대는 10번 중 8번이 들어오는 범위예요. Live pace는 실전 성적을 그대로 이어간다고 쳤을 때로 표본이 적으면 과장될 수 있어요.</p></section>'}
+    h+='<div class="grid two"><section class="card"><h2>Equity Curve<span>수익률 추이</span></h2>'+chart(d.curve)+'</section><section class="card"><h2>Weekly<span>주간</span></h2>'+per(d.weeks)+'<h2 style="margin-top:18px">Monthly<span>월간</span></h2>'+per(d.months)+'</section></div>';
+    h+='<section class="card" style="margin-bottom:12px"><h2>Bot Performance<span>봇별</span></h2><div class="scroll"><table><tr><th>Bot</th><th>Return</th><th>Trades</th><th>Win</th></tr>'
+      +(d.bots||[]).map(function(b){return '<tr><td>'+b.icon+' '+E(b.name)+'</td><td>'+CP(b.r)+'</td><td>'+b.n+'</td><td>'+PC(b.win)+'</td></tr>'}).join("")+'</table></div></section>';
+    h+='<div class="grid half"><section class="card"><h2>Strategy Attribution<span>전략별</span></h2>'+tbl(d.by_kind,"Strategy")+'</section><section class="card"><h2>By Asset<span>종목별</span></h2>'+tbl(d.by_coin,"Asset")+'</section></div>';
+    h+='<section class="card"><h2>Recent Trades<span>최근 청산</span></h2>'+((d.recent||[]).length?'<div class="scroll"><table><tr><th>Asset</th><th>Bot</th><th>Strategy</th><th>Exit</th><th>Return</th></tr>'
+      +d.recent.map(function(t){return '<tr><td>'+E(t.name)+'<span class="s">'+E(t.d)+'</span></td><td>'+E(t.bot)+'</td><td>'+E(t.kind||"-")+'</td><td>'+E(t.why||"-")+'</td><td>'+CP(t.r)+'</td></tr>'}).join("")+'</table></div>':'<div class="empty">아직 없어요</div>')+'</section>';
+    document.getElementById("app").innerHTML=h;hook(d.curve);
+  }
+  document.getElementById("share").onclick=function(){var b=this,u=location.href.split("#")[0];
+    if(navigator.share){navigator.share({title:"MK QUANT · Performance",text:"MK QUANT 퀀트 자동매매 실전 성과",url:u}).catch(function(){});return}
+    (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Share"},1800)}).catch(function(){prompt("이 링크를 복사하세요",u)})};
+  function load(){fetch("data.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(render).catch(function(){if(!window._ok)document.getElementById("app").innerHTML='<div class="card empty">데이터를 불러오지 못했어요</div>'})}
+  load();setInterval(load,60000);   // 1분마다 새 숫자 (서버는 5분마다 올림)
+})();
+</script>
+</body>
+</html>
